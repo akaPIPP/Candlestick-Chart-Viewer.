@@ -7,9 +7,9 @@ Real-time candlestick chart for Bitcoin.
 
 Switch between different timeframes (1h, 4h, 1d, etc.).
 
-Draw Fibonacci Retracements directly on the chart.
+Draw Fibonacci Retracements directly on the chart.( still to be fixed )
 
-Draw Trendlines with two clicks.
+Draw Trendlines with two clicks.( to be fixed )
 
 Clear all drawings with one click.
 
