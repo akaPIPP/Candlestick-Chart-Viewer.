@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crpyto Candlestick Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family:Arial, Helvetica, sans-serif;
+            background: #121212;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #00d09c;
+        }
+
+        #chart {
+            max-width: 800px;
+            width: 100%;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #00d09c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #121212
+        }
+
+        button:hover {
+            background: #00b38f;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #00d09c;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .tab-bar {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            background: #1e1e1e;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .tab-bar button {
+            position: relative;
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+           border-bottom: 2px solid transparent;
+            cursor: pointer;
+            font-weight: bold;
+            color: #00d09c;
+            transition: all 0.3s ease;
+        }
+
+        .tab-bar button:hover {
+            border-bottom: 2px solid;
+        }
+
+        .tab-bar button.active {
+            border-bottom: 2px solid #0090dc;
+            color: #ffffff;
+        }
+
+        .underline {
+            position: absolute;
+            bottom: 0;
+            height: 3px;
+            background-color: #00d09c;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            width: 0;
+            left: 0;
+        }
+
+        .drawing-tools {
+            display: flex;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .drawing-tools button {
+            padding: 10px 20px;
+            background: #1e1e1e;
+            border: 2px solid #0090dc;
+            border-radius: 5px;
+            color: #00d09c;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .drawing-tools button:hover {
+            background: #0090dc;
+            color: #121212;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <h1>BTC/USDT Candlestick chart</h1>
+    <div id="chart"></div>
+    <div id="loading" class="spinner hidden"></div>
+    
+    <div class="tab-bar" id="timeframes">
+    <button onclick="setTimeframe('1m')">1m</button>
+    <button onclick="setTimeframe('5m')">5m</button>
+    <button onclick="setTimeframe('15m')">15m</button>
+    <button onclick="setTimeframe('30m')">30m</button>
+    <button onclick="setTimeframe('1h')">1h</button>
+    <button onclick="setTimeframe('4h')">4h</button>
+    <button onclick="setTimeframe('1d')">1d</button>
+    <div class="underline"></div>    
+    </div>
+
+    <select id ="timeframe" onchange="changeTimeframe()" style="margin-top: 20px; padding: 10px; background: #1e1e1e; color: #00d09c; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">     
+        <option value="1m">1 Minute</option>
+        <option value="5m">5 Minutes</option>
+        <option value="15m">15 Minutes</option>
+        <option value="30m">30 Minutes</option>
+        <option value="1h">1 Hour</option>
+        <option value="4h">4 Hour</option>
+        <option value="1d">1 Day</option>
+    </select>
+
+    <button onclick="fetchData()">Refresh Data</button>
+
+    <div class="drawing-tools">
+        <button id="fibonacci-btn">Fibonacci</button>
+        <button id="trendline-btn">Trendline</button>
+        <button id="clear-btn">Clear Drawings</button>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
