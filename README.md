@@ -27,7 +27,9 @@ ApexCharts.js (for rendering candlestick charts)
 Binance API (for fetching real-time candlestick data)
 
 📸 Screenshots!
-[Screenshot 2025-04-26 162816](https://github.com/user-attachments/assets/1cb25705-330b-4609-98ea-8ed7bb75327c)
+
+![Screenshot 2025-04-26 181006](https://github.com/user-attachments/assets/b4a13956-6c3e-445f-a691-8b357ce47624)
+
 
 
 
